@@ -1,16 +1,32 @@
 .flex-container{
     display:flex;
-    width:255px;
+    width:235px;
+    flex-direction: column;
 }
+.calc-body{
+    border:solid black;
+    width:235px;
+    display:flex;
+    flex-direction: row;
+
+}
+.display{
+    flex:1;
+    padding:5px;
+}
+
+
 
 .numbers{
     margin: 2px;
-    padding:2px;
-    width:50px;
+    padding:3px;
+    width:45px;
 }
 .calc-nums{
-    flex:1;
+    flex:0.7;
+
 }
 .calc-operators{
-    flex:0.5;
+    flex:0.2;
+
 }
