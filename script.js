@@ -12,25 +12,66 @@ const operate = (operator, a, b) => {
     } else if (operator == "subtract") {
         return subtract(a, b);
     } else if (operator == "multiply") {
+        if (a === 0 || b === 0) {
+            alert("cannot multiply by zero");
+            clear();
+        }
         return multiply(a, b);
     } else if (operator == "divide") {
+        if (a === 0 || b === 0) {
+            alert("cannot divide by zero");
+            clear();
+        }
         return divide(a, b);
     }
 };
-var dispValue = null;
+
+
 const display = document.querySelector(".display");
 const numBtn = document.querySelectorAll(".numbers");
-const opBtn = document.querySelectorAll(".operators");
-const clear = () => display.textContent="";
+const opBnt = document.querySelectorAll(".operators");
+var operand = null;
+var secondOperand = null;
 
-numBtn.forEach((btn) =>{
-    btn.addEventListener("click", function(){
+var dispOne = null;
+var dispTwo = null;
+var dispValue = 0;
+
+display.textContent=dispValue;
+
+function clear() {
+    operand = null;
+    secondOperand = null;
+    dispOne = null;
+    dispTwo = null;
+    display.textContent = "";
+    dispValue = 0;
+};
+
+numBtn.forEach((btn) =>
+    btn.addEventListener("click", function () {
+        if(display.textContent == 0){
+            clear();
+        }
         display.textContent += btn.value;
-        dispValue = display.textContent;
-    });
-});
-opBtn.forEach((btn) =>{
-    btn.addEventListener("click", function(){
-        clear();
-    });
-});
+        if (secondOperand === null) {
+            dispOne = display.textContent;
+        } else {
+            dispTwo = display.textContent;
+        }
+    }));
+
+opBnt.forEach((btn) =>
+    btn.addEventListener("click", function() {
+        if (btn.value === "c") {
+            clear();
+        }
+        if (btn.value == "=") {
+
+        }
+        // if (operand === null) {
+        //     operand = btn.value();
+        // } else {
+        //     secondOperand = btn.value();
+        // }
+    }));
